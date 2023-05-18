@@ -1,9 +1,8 @@
 package com.backend2.order.service.services.impl;
 
-
-
 import com.backend2.order.service.domain.OrderDTO;
 import com.backend2.order.service.domain.OrderEntity;
+import com.backend2.order.service.exception.NoSuchOrderException;
 import com.backend2.order.service.repositories.OrderRepository;
 import com.backend2.order.service.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,6 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     public OrderServiceImpl(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
-
     }
 
 
@@ -32,8 +30,11 @@ public class OrderServiceImpl implements OrderService {
                 .collect(Collectors.toList());
     }
 
-    public Optional<OrderEntity> getOrderById(Long id) {
-        return orderRepository.findById(id);
+    @Override
+    public OrderDTO getOrderById(Long id) {
+        var match = orderRepository.findById(id)
+                .orElseThrow( () -> new NoSuchOrderException("No order with this id: " + id + " found"));
+        return toDTO(match);
     }
 
 

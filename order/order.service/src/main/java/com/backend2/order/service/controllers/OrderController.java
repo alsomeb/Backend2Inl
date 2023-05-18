@@ -24,8 +24,6 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-
-    //TODO: FIXA
     @GetMapping
     public ResponseEntity<List<OrderDTO>> getAllOrders() {
         List<OrderDTO> allOrders = orderService.getAllOrders();
@@ -34,6 +32,13 @@ public class OrderController {
         return new ResponseEntity<>(allOrders, HttpStatus.OK);
     }
 
+    @GetMapping("{id}") // Kommer behöva ändra denna senare när vi implementerar items...
+    public ResponseEntity<OrderDTO> getOrderByID(@PathVariable Long id) {
+        OrderDTO order = orderService.getOrderById(id);
+        log.info("Orders on id: {}", id);
+
+        return new ResponseEntity<>(order, HttpStatus.OK);
+    }
 
 
 

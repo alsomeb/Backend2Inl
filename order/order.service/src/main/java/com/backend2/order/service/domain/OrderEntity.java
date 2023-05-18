@@ -27,6 +27,7 @@ public class OrderEntity {
     // @OnDelete(action = OnDeleteAction.CASCADE) // Tas kund bort tas order bort i vårat fall
    // private CustomerEntity customerEntity;
 
+    private Long customerId;
     private LocalDate created;
     private LocalDate lastUpdated;
 
