@@ -8,10 +8,10 @@ import java.util.Optional;
 
 public interface OrderService {
 
-    // TODO: FIXA - fellden
     List<OrderDTO> getAllOrders();
 
 
     OrderDTO getOrderById(Long id);
+
 
 }

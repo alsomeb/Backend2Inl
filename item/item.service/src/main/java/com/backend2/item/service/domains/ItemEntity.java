@@ -18,11 +18,12 @@ import java.util.Set;
 @AllArgsConstructor
 @ToString
 @Builder
-@Table(name = "Items")
+@Table(name = "items")
 public class ItemEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "items_seq_generator")
+    @SequenceGenerator(name = "items_seq_generator", sequenceName = "items_seq", allocationSize = 1)
     private Long id;
     @NotEmpty
     @NotBlank
