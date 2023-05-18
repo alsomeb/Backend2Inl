@@ -54,7 +54,6 @@ public class CustomerServiceImpl implements CustomerService {
             var oldCustomerDTOMatch = findCustomerById(customerDTO.getId());
             oldCustomerDTOMatch.setLastUpdated(LocalDate.now());
             oldCustomerDTOMatch.setSsn(customerDTO.getSsn());
-            oldCustomerDTOMatch.setCreated(customerDTO.getCreated());
             oldCustomerDTOMatch.setLastName(customerDTO.getLastName());
             oldCustomerDTOMatch.setFirstName(customerDTO.getFirstName());
 
@@ -63,6 +62,8 @@ public class CustomerServiceImpl implements CustomerService {
         }
 
         var entityToSave = toEntity(customerDTO);
+        entityToSave.setCreated(LocalDate.now());
+        entityToSave.setLastUpdated(LocalDate.now());
         var savedCustomerEntity = customerRepository.save(entityToSave);
 
         return toDTO(savedCustomerEntity);

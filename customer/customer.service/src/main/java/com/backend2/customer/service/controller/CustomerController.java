@@ -52,26 +52,12 @@ public class CustomerController {
         return new ResponseEntity<>(entityModel, HttpStatus.OK);
     }
 
-    // Create
-    @PostMapping
-    public ResponseEntity<EntityModel<CustomerDTO>> createCustomer(@Valid @RequestBody final CustomerDTO customerDTO) {
-        final CustomerDTO savedCustomer = customerService.create(customerDTO);
-
-        // links HATEOAS
-        EntityModel<CustomerDTO> entityModel = EntityModel.of(savedCustomer,
-                linkTo(methodOn(CustomerController.class).retrieveCustomer(savedCustomer.getId())).withSelfRel(),
-                linkTo(methodOn(CustomerController.class).listCustomers()).withRel("all-customers"));
-
-        log.info("POST: Created new customer with id {}", savedCustomer.getId());
-
-        return new ResponseEntity<>(entityModel, HttpStatus.CREATED);
-    }
-
-    //UPDATE
+    //UPDATE + CREATE
     @PutMapping("{id}")
     public ResponseEntity<EntityModel<CustomerDTO>> updateList(@Valid @RequestBody CustomerDTO customer, @PathVariable Long id) {
 
         customer.setId(id);
+
         final boolean exists = customerService.doesCustomerExist(customer);
         final CustomerDTO savedCustomer = customerService.save(customer);
 
