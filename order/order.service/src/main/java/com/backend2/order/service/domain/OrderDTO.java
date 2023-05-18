@@ -13,7 +13,8 @@ import java.time.LocalDate;
 @Builder
 public class OrderDTO {
     private Long id;
+    private Long customerId;
     private LocalDate created;
     private LocalDate lastUpdated;
-//    private List<Item> items;
+    private String jsonOrderContents;
 }
