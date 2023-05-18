@@ -42,6 +42,7 @@ public class OrderServiceImpl implements OrderService {
     private OrderDTO toDTO(OrderEntity orderEntity) {
         return OrderDTO.builder()
                 .id(orderEntity.getId())
+                .customerId(orderEntity.getCustomerId())
                 .lastUpdated(orderEntity.getLastUpdated())
                 .created(orderEntity.getCreated())
                 .build();

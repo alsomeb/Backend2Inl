@@ -30,6 +30,7 @@ public class OrderEntity {
     private Long customerId;
     private LocalDate created;
     private LocalDate lastUpdated;
+//    private String jsonOrderContents;
 
 /*    @OneToMany(mappedBy = "orderEntity")
     private Set<OrderItemEntity> orders;*/
