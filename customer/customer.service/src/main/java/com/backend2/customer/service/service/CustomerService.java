@@ -1,6 +1,7 @@
 package com.backend2.customer.service.service;
 
 import com.backend2.customer.service.dto.CustomerDTO;
+import com.backend2.customer.service.dto.DeleteResponse;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public interface CustomerService {
     CustomerDTO create(CustomerDTO customer);
 
     CustomerDTO save(CustomerDTO customer);
-    boolean deleteCustomerById(Long id);
+    DeleteResponse deleteCustomerById(Long id);
 
     boolean doesCustomerExist(CustomerDTO customer);
 }
