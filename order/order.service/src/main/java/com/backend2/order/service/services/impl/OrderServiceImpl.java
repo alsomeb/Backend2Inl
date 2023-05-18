@@ -8,6 +8,7 @@ import com.backend2.order.service.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -37,11 +38,10 @@ public class OrderServiceImpl implements OrderService {
         return toDTO(match);
     }
 
-
-
     private OrderDTO toDTO(OrderEntity orderEntity) {
         return OrderDTO.builder()
                 .id(orderEntity.getId())
+                .customerId(orderEntity.getCustomerId())
                 .lastUpdated(orderEntity.getLastUpdated())
                 .created(orderEntity.getCreated())
                 .build();
