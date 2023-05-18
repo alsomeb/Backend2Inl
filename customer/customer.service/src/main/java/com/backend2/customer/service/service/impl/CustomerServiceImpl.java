@@ -7,7 +7,6 @@ import com.backend2.customer.service.entity.CustomerEntity;
 import com.backend2.customer.service.repository.CustomerRepository;
 import com.backend2.customer.service.service.CustomerService;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -54,7 +53,6 @@ public class CustomerServiceImpl implements CustomerService {
             var oldCustomerDTOMatch = findCustomerById(customerDTO.getId());
             oldCustomerDTOMatch.setLastUpdated(LocalDate.now());
             oldCustomerDTOMatch.setSsn(customerDTO.getSsn());
-            oldCustomerDTOMatch.setCreated(customerDTO.getCreated());
             oldCustomerDTOMatch.setLastName(customerDTO.getLastName());
             oldCustomerDTOMatch.setFirstName(customerDTO.getFirstName());
 
@@ -63,6 +61,8 @@ public class CustomerServiceImpl implements CustomerService {
         }
 
         var entityToSave = toEntity(customerDTO);
+        entityToSave.setCreated(LocalDate.now());
+        entityToSave.setLastUpdated(LocalDate.now());
         var savedCustomerEntity = customerRepository.save(entityToSave);
 
         return toDTO(savedCustomerEntity);
