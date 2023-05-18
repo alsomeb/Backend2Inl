@@ -8,6 +8,10 @@ group = 'com.backend2'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
+bootJar {
+	archiveFileName = "${archiveBaseName.get()}.${archiveExtension.get()}"
+}
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
