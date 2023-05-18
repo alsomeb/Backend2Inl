@@ -7,7 +7,7 @@ import java.util.List;
 public interface OrderService {
 
     // TODO: FIXA - fellden
-    //List<OrderDTO> getAllOrders();
+    List<OrderDTO> getAllOrders();
 
 
   //TODO: Implementera - fellden
