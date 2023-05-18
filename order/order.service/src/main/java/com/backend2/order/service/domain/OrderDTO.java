@@ -16,5 +16,5 @@ public class OrderDTO {
     private Long customerId;
     private LocalDate created;
     private LocalDate lastUpdated;
-    private String jsonOrderContents;
+//    private String jsonOrderContents;
 }
