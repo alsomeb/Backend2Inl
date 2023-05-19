@@ -24,9 +24,6 @@ public class CustomerController {
 
     private final CustomerService customerService;
 
-
-
-
     //READ
     @GetMapping
     public ResponseEntity<List<CustomerDTO>> listCustomers() {
