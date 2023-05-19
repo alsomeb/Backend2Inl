@@ -1,9 +1,9 @@
-version: '3'
+version: "3"
 services:
   db:
     build:
       context: .
-      dockerfile: db.Dockerfile
+      dockerfile: Dockerfile
     environment:
       - MYSQL_DATABASE=customers
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
@@ -16,10 +16,10 @@ services:
     networks:
       - networkalex
 
-  app:
+  customer-service:
     build:
-      context: .
-      dockerfile: app.Dockerfile
+      context: ./customer/customer.service
+      dockerfile: Dockerfile
     depends_on:
       - db
     restart: on-failure
