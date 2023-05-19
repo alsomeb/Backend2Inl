@@ -1,0 +1,33 @@
+version: '3'
+services:
+  db:
+    build:
+      context: .
+      dockerfile: db.Dockerfile
+    environment:
+      - MYSQL_DATABASE=orders
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_USER=orderjanne
+      - MYSQL_PASSWORD=janne123
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
+    networks:
+      - networkdaniel
+
+  app:
+    build:
+      context: .
+      dockerfile: app.Dockerfile
+    depends_on:
+      - db
+    restart: on-failure
+    ports:
+      - 8080:8080
+    networks:
+      - networkdaniel
+
+networks:
+  networkdaniel:
+    driver: bridge
