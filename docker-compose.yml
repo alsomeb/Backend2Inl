@@ -21,7 +21,7 @@ services:
       context: ./customer/customer.service
       dockerfile: Dockerfile
     depends_on:
-      - db
+      - customer-db
     restart: on-failure
     ports:
       - "8080:8080"
