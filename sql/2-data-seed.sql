@@ -1,5 +1,5 @@
 -- DATA SEED
-
+USE customers;
 -- Customers
 insert into customers(id, first_name, last_name, ssn, created, last_updated)
 values
