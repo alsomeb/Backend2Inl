@@ -2,6 +2,9 @@
 
 -- Customers
 USE customers;
+revoke ALL on `customers`.* from 'bengt'@'%';
+grant select, insert, delete, update on customers.* to 'bengt'@'%';
+
 create table customers (
                            id bigint not null,
                            created date,
@@ -23,8 +26,9 @@ values
 
 -- Orders
 CREATE DATABASE IF NOT EXISTS `orders`;
-GRANT ALL ON `orders`.* TO 'bengt'@'%';
 USE orders;
+grant select, insert, delete, update on orders.* to 'bengt'@'%';
+
 create table orders (
                         id bigint not null,
                         customer_id bigint not null,
@@ -47,8 +51,9 @@ values
 
 -- Items
 CREATE DATABASE IF NOT EXISTS `items`;
-GRANT ALL ON `items`.* TO 'bengt'@'%';
 USE items;
+grant select, insert, delete, update on items.* to 'bengt'@'%';
+
 create table items (
                        id bigint not null,
                        balance bigint,
@@ -71,13 +76,3 @@ values
     (5, 'macbook pro', 5000, 23, current_timestamp(), current_timestamp()),
     (6, 'Katalysator, universal', 629, 23, current_timestamp(), current_timestamp());
 
-
-
--- SECURITY
-revoke ALL on `customers`.* from 'bengt'@'%';
-revoke ALL on `orders`.* from 'bengt'@'%';
-revoke ALL on `items`.* from 'bengt'@'%';
-
-grant select, insert, delete, update on customers.* to 'bengt'@'%';
-grant select, insert, delete, update on orders.* to 'bengt'@'%';
-grant select, insert, delete, update on items.* to 'bengt'@'%';
