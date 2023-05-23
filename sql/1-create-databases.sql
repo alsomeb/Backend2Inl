@@ -1,8 +1,9 @@
-GRANT ALL ON `customers`.* TO 'bengt'@'%';
 
 
-USE customers;
+-- SKAPA TABLES + DBS
+
 -- Customers
+USE customers;
 create table customers (
                            id bigint not null,
                            created date,
@@ -22,9 +23,9 @@ values
 
 
 
+-- Orders
 CREATE DATABASE IF NOT EXISTS `orders`;
 GRANT ALL ON `orders`.* TO 'bengt'@'%';
--- Orders
 USE orders;
 create table orders (
                         id bigint not null,
@@ -44,9 +45,11 @@ values
     (4, 3, current_timestamp(),  current_timestamp());
 
 
+
+
+-- Items
 CREATE DATABASE IF NOT EXISTS `items`;
 GRANT ALL ON `items`.* TO 'bengt'@'%';
--- Items
 USE items;
 create table items (
                        id bigint not null,
@@ -72,4 +75,11 @@ values
 
 
 
+-- SECURITY
+revoke ALL on `customers`.* from 'bengt'@'%';
+revoke ALL on `orders`.* from 'bengt'@'%';
+revoke ALL on `items`.* from 'bengt'@'%';
 
+grant select, insert, delete, update on customers.* to 'bengt'@'%';
+grant select, insert, delete, update on orders.* to 'bengt'@'%';
+grant select, insert, delete, update on items.* to 'bengt'@'%';
