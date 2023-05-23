@@ -1,5 +1,3 @@
-
-
 -- SKAPA TABLES + DBS
 
 -- Customers
