@@ -1,6 +1,6 @@
 version: "3.9"
 services:
-  customer-db:
+  db:
     build:
       context: .
       dockerfile: Dockerfile
@@ -19,7 +19,7 @@ services:
       context: ./customer/customer.service
       dockerfile: Dockerfile
     depends_on:
-      customer-db:
+      db:
         condition: service_healthy # kommer köras såfort vi får godkänd health_check från db
     container_name: customer-service
     ports:
@@ -32,11 +32,24 @@ services:
       context: ./order/order.service
       dockerfile: Dockerfile
     depends_on:
-      customer-db:
+      db:
         condition: service_healthy
     container_name: order-service
     ports:
       - "8081:8080"
+    networks:
+      - networkalex
+
+  item-serivce:
+    build:
+      context: ./item/item.serivce
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    container_name: item-service
+    ports:
+      - "8082:8080"
     networks:
       - networkalex
 
