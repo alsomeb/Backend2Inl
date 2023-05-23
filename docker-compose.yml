@@ -27,6 +27,18 @@ services:
     networks:
       - networkalex
 
+  order-service:
+    build:
+      context: ./order/order.service
+      dockerfile: Dockerfile
+    depends_on:
+      customer-db:
+        condition: service_healthy
+    container_name: order-service
+    ports: -"8081:8080"
+    networks:
+      - networkalex
+
 networks:
   networkalex:
     driver: bridge
