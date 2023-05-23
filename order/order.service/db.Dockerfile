@@ -1,9 +1,0 @@
-FROM mariadb:10.4
-
-ENV MYSQL_DATABASE orders
-ENV MYSQL_RANDOM_ROOT_PASSWORD yes
-ENV MYSQL_USER orderjanne
-ENV MYSQL_PASSWORD janne123
-
-COPY sql/ /docker-entrypoint-initdb.d/
-EXPOSE 3306
