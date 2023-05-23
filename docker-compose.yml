@@ -42,7 +42,7 @@ services:
 
   item-serivce:
     build:
-      context: ./item/item.serivce
+      context: ./item/item.service
       dockerfile: Dockerfile
     depends_on:
       db:
