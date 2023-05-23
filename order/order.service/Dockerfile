@@ -1,9 +1,7 @@
-FROM mariadb:10.4
+FROM eclipse-temurin:17-jdk-alpine
 
-ENV MYSQL_DATABASE orders
-ENV MYSQL_RANDOM_ROOT_PASSWORD yes
-ENV MYSQL_USER orderjanne
-ENV MYSQL_PASSWORD janne123
-
-COPY sql/ /docker-entrypoint-initdb.d/
-EXPOSE 3306
+VOLUME /tmp
+ARG JAR_FILE=build/libs/order.service.jar
+COPY ${JAR_FILE} app.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","/app.jar"]

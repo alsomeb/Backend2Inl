@@ -1,0 +1,41 @@
+version: "3.9"
+services:
+  customer-db:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: maria-db
+    ports:
+      - "3306:3306"
+    networks:
+      - networkalex
+    healthcheck:
+      test: ["CMD-SHELL", "exit"]
+      interval: 20s # kommer slänga första health_check efter 20 sec, kan jag anv cmd shell i den -> exit cmd
+      timeout: 30s
+
+  customer-service:
+    build:
+      context: ./customer/customer.service
+      dockerfile: Dockerfile
+    depends_on:
+      customer-db:
+        condition: service_healthy # kommer köras såfort vi får godkänd health_check från db
+    container_name: customer-service
+    ports:
+      - "8080:8080"
+    networks:
+      - networkalex
+
+networks:
+  networkalex:
+    driver: bridge
+## https://stackoverflow.com/questions/68186759/docker-compose-healthcheck-options
+## Interval
+## The health check will first run interval seconds after the container is started, and then again interval seconds after each previous check completes.
+
+## Timeout
+## If a single run of the check takes longer than timeout seconds then the check is considered to have failed.
+
+## Retries
+## It takes retries consecutive failures of the health check for the container to be considered unhealthy.
