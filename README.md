@@ -17,7 +17,8 @@
     <li><strong>Admin: Kan komma åt allt</strong></li>
 </ul>
 
-Checklista inlämning backend 2
+<hr>
+<h1>Checklista inlämning backend 2</h1>
 
 1. RestTemplates U+2713
 2. Check Docker compose U+2713
