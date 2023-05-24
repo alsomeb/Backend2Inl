@@ -20,12 +20,12 @@
 <hr>
 <h1>Checklista inlämning backend 2</h1>
 
-1. RestTemplates <span style="color: green">&#x2713;</span>
-2. Check Docker compose <span style="color: green">&#x2713;</span>
-3. OpenAPI 3 Springdoc for each service <span style="color: green">&#x2713;</span>
-4. Implement error handling for RestTemplates <span style="color: green">&#x2713;</span>
-5. Implement Spring Validation <span style="color: green">&#x2713;</span>
-6. Implement Spring Security for ONE service with login <span style="color: green">&#x2713;</span>
+1. RestTemplates <span style="color: green;">&#x2713;</span>
+2. Check Docker compose <span style="color: green;">&#x2713;</span>
+3. OpenAPI 3 Springdoc for each service <span style="color: green;">&#x2713;</span>
+4. Implement error handling for RestTemplates <span style="color: green;">&#x2713;</span>
+5. Implement Spring Validation <span style="color: green;">&#x2713;</span>
+6. Implement Spring Security for ONE service with login <span style="color: green;">&#x2713;</span>
 7. Create Integration test for G part
 8. Create Integration test for VG part
-9. push images to ghcr.io <span style="color: green">&#x2713;</span>
+9. push images to ghcr.io <span style="color: green;">&#x2713;</span>
