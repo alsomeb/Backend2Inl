@@ -2,12 +2,14 @@ package com.backend2.order.service.controllers;
 
 import com.backend2.order.service.domain.OrderDTO;
 import com.backend2.order.service.services.OrderService;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -15,14 +17,11 @@ import java.util.List;
 @RestController
 @RequestMapping("orders")
 @Slf4j
+@AllArgsConstructor
 public class OrderController {
 
     private final OrderService orderService;
 
-    @Autowired
-    public OrderController(OrderService orderService) {
-        this.orderService = orderService;
-    }
 
     @GetMapping
     public ResponseEntity<List<OrderDTO>> getAllOrders() {
@@ -32,7 +31,7 @@ public class OrderController {
         return new ResponseEntity<>(allOrders, HttpStatus.OK);
     }
 
-    @GetMapping("{id}") // Kommer behöva ändra denna senare när vi implementerar items...
+    @GetMapping("{id}")
     public ResponseEntity<OrderDTO> getOrderByID(@PathVariable Long id) {
         OrderDTO order = orderService.getOrderById(id);
         log.info("Orders on id: {}", id);
@@ -40,4 +39,12 @@ public class OrderController {
         return new ResponseEntity<>(order, HttpStatus.OK);
     }
 
+
+    // Pratar med Customer-service API
+    @GetMapping("customers/{id}")
+    public ResponseEntity<List<OrderDTO>> getOrdersByCustomerId(@PathVariable Long id) {
+        List<OrderDTO> results = orderService.getOrdersByCustomerId(id);
+        log.info("Orders by Customer ID: {}", results);
+        return new ResponseEntity<>(results, HttpStatus.OK);
+    }
 }

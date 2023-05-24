@@ -16,4 +16,6 @@ public interface CustomerService {
     DeleteResponse deleteCustomerById(Long id);
 
     boolean doesCustomerExist(CustomerDTO customer);
+
+    boolean existById(Long id);
 }

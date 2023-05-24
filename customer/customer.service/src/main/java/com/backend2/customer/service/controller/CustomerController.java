@@ -78,4 +78,14 @@ public class CustomerController {
         log.info("DELETE RESPONSE: {}", response);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
+
+    @GetMapping("exists/{id}")
+    public ResponseEntity<Boolean> checkExists(@PathVariable final Long id) {
+        final boolean doesCustomerExist = customerService.existById(id);
+        return new ResponseEntity<>(doesCustomerExist, HttpStatus.OK);
+    }
+
 }
+
+

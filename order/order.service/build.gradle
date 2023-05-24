@@ -33,6 +33,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-hateoas:3.0.5' // Hateoas
 	implementation 'org.springframework.boot:spring-boot-starter-validation:3.0.5' // Validator
 	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.0' // För ObjectMapper i Testerna
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0' // springdoc-openapi
 }
 
 tasks.named('test') {

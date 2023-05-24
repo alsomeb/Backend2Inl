@@ -83,6 +83,11 @@ public class CustomerServiceImpl implements CustomerService {
         return customerRepository.existsById(customerDTO.getId());
     }
 
+    @Override
+    public boolean existById(Long id) {
+        return customerRepository.existsById(id);
+    }
+
 
     // HELPER METHODS
     private CustomerEntity toEntity(CustomerDTO customerDTO) {
