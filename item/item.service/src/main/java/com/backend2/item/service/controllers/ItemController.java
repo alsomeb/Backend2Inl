@@ -41,7 +41,6 @@ public class ItemController {
         return itemService.findItemEntityById(id).map(item -> new ResponseEntity<>(item, HttpStatus.OK)).orElseThrow(() -> new NoSuchItemException("Item with id: " + id + " doesn't exist"));
     }
 
-    //TODO NICE TO HAVE: VALIDERA ATT DET ÄR EN JPEG/PNG SOM SKICKAS
     //get item image
     @GetMapping("/{id}/img")
     public ResponseEntity<byte[]> getItemImage(@PathVariable Long id) {
