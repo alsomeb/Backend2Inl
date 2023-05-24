@@ -6,11 +6,9 @@ import com.backend2.order.service.exception.NoSuchCustomerException;
 import com.backend2.order.service.exception.NoSuchOrderException;
 import com.backend2.order.service.repositories.OrderRepository;
 import com.backend2.order.service.services.OrderService;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
@@ -53,10 +51,10 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<OrderDTO> getOrdersByCustomerId(Long id) {
-        ResponseEntity<Boolean> result = checkCustomerExistsById(id);
+        boolean customerExist = checkCustomerExistsById(id);
 
         // Om Orders finns på Customer ID return ORDER DTO Listan
-        if(Boolean.TRUE.equals(result.getBody())) {
+        if(customerExist) {
             return orderRepository.findOrderEntitiesByCustomerId(id).stream()
                     .map(this::toDTO)
                     .collect(Collectors.toList());
@@ -66,11 +64,25 @@ public class OrderServiceImpl implements OrderService {
 
     }
 
-    private ResponseEntity<Boolean> checkCustomerExistsById(long id) {
+    /*
+        exchange() method PARAMS:
+
+        url – the URL
+
+        method – the HTTP method (GET, POST, etc)
+
+        requestEntity – the entity (headers and/or body) to write to the request may be null)
+
+        responseType – the type to convert the response to, or Void.class for no body
+
+        uriVariables – the variables to expand in the template
+     */
+    private boolean checkCustomerExistsById(long id) {
         String url = customerServiceRootURL.concat("customers/exists/").concat(String.valueOf(id));
 
         try {
-            return restTemplate.exchange(url, HttpMethod.GET, null, Boolean.class);
+            ResponseEntity<Boolean> resultResponse =  restTemplate.exchange(url, HttpMethod.GET, null, Boolean.class);
+            return resultResponse.getBody();
         } catch (RestClientException e) {
             throw new NoSuchCustomerException("Cannot retrieve customer with id: " + id + " from customer-service");
         }

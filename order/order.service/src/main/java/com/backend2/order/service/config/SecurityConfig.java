@@ -8,8 +8,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import jakarta.servlet.DispatcherType;
@@ -35,15 +33,12 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-
-        PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-
         UserDetails user = User.withUsername("user")
-                .password("{bcrypt}$2a$10$38uf6UjXN0ReHBg/UECzVOMftm0n7GYm4ixFH8Oh3xgtz.chbzYPa")
+                .password("{bcrypt}$2a$10$kxYrWYRtvdTfqAni9qKySubVSkXWQtDbyoct1Yuo6RWUmq0U0qQBe")
                 .roles("USER")
                 .build();
         UserDetails admin = User.withUsername("admin")
-                .password("{bcrypt}$2a$10$38uf6UjXN0ReHBg/UECzVOMftm0n7GYm4ixFH8Oh3xgtz.chbzYPa")
+                .password("{bcrypt}$2a$10$kxYrWYRtvdTfqAni9qKySubVSkXWQtDbyoct1Yuo6RWUmq0U0qQBe")
                 .roles("USER", "ADMIN")
                 .build();
         return new InMemoryUserDetailsManager(user, admin);
