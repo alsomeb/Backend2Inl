@@ -24,7 +24,7 @@
 2. Check Docker compose <span>&#x2705;</span>
 3. OpenAPI 3 Springdoc for each service <span>&#x2705;</span>
 4. Implement error handling for RestTemplates <span>&#x2705;</span>
-5. Implement Spring Validation <span>&#x2705;</span>
+5. Implement Spring Validation On CustomerEntity on Customer-service<span>&#x2705;</span>
 6. Implement Spring Security for ONE service with login <span>&#x2705;</span>
 7. Create Integration test for G part
 8. Create Integration test for VG part
