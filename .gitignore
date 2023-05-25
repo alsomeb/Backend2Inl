@@ -1,3 +1,6 @@
 ## tba
 .DS_Store
 .idea
+
+# Ignore all yml files
+*.yml
