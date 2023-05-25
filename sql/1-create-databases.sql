@@ -1,9 +1,7 @@
 -- Customers
-CREATE DATABASE IF NOT EXISTS `customers`;
 USE customers;
 revoke ALL on `customers`.* from 'bengt'@'%';
 grant select, insert, delete, update on customers.* to 'bengt'@'%';
-
 create table customers (
                            id bigint not null,
                            created date,
