@@ -26,7 +26,7 @@
 4. Implement error handling for RestTemplates <span>&#x2705;</span>
 5. Implement Spring Validation On CustomerEntity on Customer-service<span>&#x2705;</span>
 6. Implement Spring Security for ONE service with login <span>&#x2705;</span>
-7. Create Integration test for G part
+7. Create Integration test for G part <span>&#x2705;</span>
 8. Create Integration test for VG part <span>&#x2705;</span>
 9. push images to ghcr.io <span>&#x2705;</span>
 
@@ -34,7 +34,7 @@
 <h2> Print Screens for G </h2>
 
 <h3> Create a integration test that verifies that the services can communicate [Order-Service talks to Customer-Service]</h3>
-![image](https://github.com/alsomeb/Backend2Inl/assets/45339645/3e9f9a9d-670f-4ad8-bcf3-314e2c8eb11a)
+<img src="https://github.com/alsomeb/Backend2Inl/assets/45339645/3e9f9a9d-670f-4ad8-bcf3-314e2c8eb11a">
 ![image](https://github.com/alsomeb/Backend2Inl/assets/45339645/9a0df374-3372-4d85-9a03-5568aa42c471)
 
 <hr>
