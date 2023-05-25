@@ -14,10 +14,6 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import jakarta.servlet.DispatcherType;
 
-
-
-
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -48,6 +44,5 @@ public class SecurityConfig {
                 .build();
         return new InMemoryUserDetailsManager(user, admin);
     }
-
 
 }
