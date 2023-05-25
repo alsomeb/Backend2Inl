@@ -41,7 +41,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(details, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(NoSuchCustomerException.class)
+    @ExceptionHandler(CustomerServiceConnectionException.class)
     public final ResponseEntity<ErrorDetails> handleNoSuchCustomerException(Exception ex, WebRequest request) {
         ErrorDetails details = ErrorDetails.builder()
                 .timeStamp(LocalDateTime.now())

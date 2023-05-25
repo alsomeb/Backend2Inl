@@ -2,6 +2,7 @@ package com.backend2.order.service.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.retry.annotation.EnableRetry;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -14,6 +15,7 @@ import jakarta.servlet.DispatcherType;
 
 @Configuration
 @EnableWebSecurity
+@EnableRetry // this app has retry logic
 public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http)
@@ -23,7 +25,7 @@ public class SecurityConfig {
                         DispatcherType.ERROR).permitAll()
                         .requestMatchers("/orders").hasRole("USER")
                         .requestMatchers( "/**").hasRole("ADMIN"))
-                .formLogin(Customizer.withDefaults());
+                .formLogin(Customizer.withDefaults()).csrf().disable(); // Så vi kan göra mer än GET req
         return http.build();
     }
 

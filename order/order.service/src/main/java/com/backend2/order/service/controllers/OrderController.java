@@ -4,12 +4,10 @@ import com.backend2.order.service.domain.OrderDTO;
 import com.backend2.order.service.services.OrderService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
+
 
 import java.util.List;
 
@@ -47,4 +45,5 @@ public class OrderController {
         log.info("Orders by Customer ID: {}", results);
         return new ResponseEntity<>(results, HttpStatus.OK);
     }
+
 }

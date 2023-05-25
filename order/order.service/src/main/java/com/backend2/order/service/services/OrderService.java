@@ -1,10 +1,10 @@
 package com.backend2.order.service.services;
 
 import com.backend2.order.service.domain.OrderDTO;
-import com.backend2.order.service.domain.OrderEntity;
+import org.springframework.retry.annotation.Recover;
+import org.springframework.retry.annotation.Retryable;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface OrderService {
 
@@ -13,7 +13,11 @@ public interface OrderService {
 
     OrderDTO getOrderById(Long id);
 
-
+    // Return Type + Param must be same on @Retryable and @Recover
+    @Retryable
     List<OrderDTO> getOrdersByCustomerId(Long id);
+
+    @Recover
+    List<OrderDTO> recoveryGetOrdersByCustomerId(Long id);
 
 }
