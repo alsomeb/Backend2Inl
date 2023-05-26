@@ -2,5 +2,5 @@
 .DS_Store
 .idea
 
-# Ignore all yml files
-*.yml
+# Ignore all .env files
+*.env
