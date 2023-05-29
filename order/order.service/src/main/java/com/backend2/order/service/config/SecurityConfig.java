@@ -20,12 +20,15 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http)
             throws Exception {
-        http.authorizeHttpRequests((requests) -> requests
+                http.authorizeHttpRequests((requests) -> requests
                 .dispatcherTypeMatchers(DispatcherType.FORWARD,
                         DispatcherType.ERROR).permitAll()
                         .requestMatchers("/orders").hasRole("USER")
                         .requestMatchers( "/**").hasRole("ADMIN"))
-                .formLogin(Customizer.withDefaults()).csrf().disable(); // Så vi kan göra mer än GET req
+                .formLogin(Customizer.withDefaults())
+                .csrf().disable(); // Så vi kan göra mer än GET req
+        
+                http.httpBasic(Customizer.withDefaults()); // Så vi kan anv 'Authorization' Header för Postman
         return http.build();
     }
 

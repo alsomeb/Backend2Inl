@@ -1,5 +1,6 @@
 package com.backend2.customer.service.controller;
 
+import com.backend2.customer.service.dto.AIResponse;
 import com.backend2.customer.service.dto.CustomerDTO;
 import com.backend2.customer.service.dto.DeleteResponse;
 import com.backend2.customer.service.service.CustomerService;
@@ -84,6 +85,15 @@ public class CustomerController {
     public ResponseEntity<Boolean> checkExists(@PathVariable final Long id) {
         final boolean doesCustomerExist = customerService.existById(id);
         return new ResponseEntity<>(doesCustomerExist, HttpStatus.OK);
+    }
+
+    // Extra (Behöver AI API:n från Alex Github påslagen)
+    @GetMapping("{id}/name")
+    public ResponseEntity<AIResponse> explainCustomerNameHistory(@PathVariable Long id) {
+        AIResponse response = customerService.explainNameByCustomerId(id);
+
+        log.info("AI Response: {}", response);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 }

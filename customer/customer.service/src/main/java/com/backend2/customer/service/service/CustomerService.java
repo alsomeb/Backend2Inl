@@ -1,5 +1,6 @@
 package com.backend2.customer.service.service;
 
+import com.backend2.customer.service.dto.AIResponse;
 import com.backend2.customer.service.dto.CustomerDTO;
 import com.backend2.customer.service.dto.DeleteResponse;
 
@@ -18,4 +19,6 @@ public interface CustomerService {
     boolean doesCustomerExist(CustomerDTO customer);
 
     boolean existById(Long id);
+
+    AIResponse explainNameByCustomerId(Long id);
 }

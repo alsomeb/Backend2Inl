@@ -1,13 +1,16 @@
 package com.backend2.customer.service.service.impl;
 
 import com.backend2.customer.service.Exception.NoSuchCustomerException;
+import com.backend2.customer.service.dto.AIResponse;
 import com.backend2.customer.service.dto.CustomerDTO;
 import com.backend2.customer.service.dto.DeleteResponse;
 import com.backend2.customer.service.entity.CustomerEntity;
 import com.backend2.customer.service.repository.CustomerRepository;
 import com.backend2.customer.service.service.CustomerService;
-import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -16,10 +19,21 @@ import java.util.stream.Collectors;
 
 
 @Service
-@AllArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
+
+    private final RestTemplate restTemplate;
+
+    @Value("${ai.service.url}")
+    private String rootUrl;
+
+
+    @Autowired
+    public CustomerServiceImpl(CustomerRepository customerRepository, RestTemplate restTemplate) {
+        this.customerRepository = customerRepository;
+        this.restTemplate = restTemplate;
+    }
 
     @Override
     public List<CustomerDTO> listCustomers() {
@@ -86,6 +100,16 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public boolean existById(Long id) {
         return customerRepository.existsById(id);
+    }
+
+    @Override
+    public AIResponse explainNameByCustomerId(Long id) {
+        var matchCustomer = findCustomerById(id); // Om ej customer finns kommer den slå ifrån
+        String nameToAsk = matchCustomer.getFirstName();
+        String url = rootUrl + " " + nameToAsk;
+
+
+        return restTemplate.getForObject(url, AIResponse.class);
     }
 
 
