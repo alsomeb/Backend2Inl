@@ -18,6 +18,12 @@
 </ul>
 
 <hr>
+<h3>Customer Spring Bot integration</h3>
+<ul>
+    <li><strong>..customers/{id}/name</strong> får man veta AI genererad historia om sitt namn</li>
+</ul>
+
+<hr>
 <h1>Checklista inlämning backend 2</h1>
 
 1. RestTemplates <span>&#x2705;</span>
@@ -50,4 +56,3 @@
  <h3> Implement Spring Validation for the restcontroller and database [Validation on Customer in Customer-Service]</h3>
  <img src="https://github.com/alsomeb/Backend2Inl/assets/45339645/82006adb-a78d-4b4f-964c-af7b7f236a66">
  <img src="https://github.com/alsomeb/Backend2Inl/assets/45339645/8da83ff8-9aeb-4d2f-b376-fc75343df4f0">
-
