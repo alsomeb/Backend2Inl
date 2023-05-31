@@ -29,7 +29,7 @@
 1. RestTemplates <span>&#x2705;</span>
 2. Docker compose <span>&#x2705;</span>
 3. OpenAPI 3 Springdoc for each service <span>&#x2705;</span>
-4. Implement error handling for RestTemplate (Order Service) <span>&#x2705;</span>
+4. Implement error handling for RestTemplate (Order Service, also with spring boot retry logic ) <span>&#x2705;</span>
 5. Implement Spring Validation On CustomerEntity on Customer-service<span>&#x2705;</span>
 6. Implement Spring Security for ONE service with login (order service)<span>&#x2705;</span>
 7. Integration test G part <span>&#x2705;</span>
