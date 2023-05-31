@@ -31,7 +31,7 @@
 3. OpenAPI 3 Springdoc for each service <span>&#x2705;</span>
 4. Implement error handling for RestTemplates <span>&#x2705;</span>
 5. Implement Spring Validation On CustomerEntity on Customer-service<span>&#x2705;</span>
-6. Implement Spring Security for ONE service with login <span>&#x2705;</span>
+6. Implement Spring Security for ONE service with login (order service)<span>&#x2705;</span>
 7. Integration test G part <span>&#x2705;</span>
 8. Integration test VG part <span>&#x2705;</span>
 9. push images to ghcr.io <span>&#x2705;</span>
